@@ -15,7 +15,8 @@
 -Tailwind CSS: A utility-first CSS framework to style the frontend components.
 <h1>Code Explanation</h1>
 <h2>Backend</h2>
-
+<h2>Server Setup</h2>
+-------------------------------
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
@@ -24,13 +25,14 @@ import cors from 'cors';
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+-------------------------------
+
 Express Initialization: Initializes an Express application.
 Middleware:
 bodyParser.json() parses JSON request bodies.
 cors() enables Cross-Origin Resource Sharing.
-Email Normalization and Spoof Detection
-typescript
-Copy code
+
+<h2>Email Normalization and Spoof Detection</h2>
 const commonDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'];
 const similarCharacters: { [key: string]: string[] } = {
     'o': ['0'],
@@ -55,9 +57,8 @@ function normalizeEmail(email: string): string {
 Common Domains: A list of known legitimate email domains.
 Similar Characters: A mapping of characters often used interchangeably in phishing attempts.
 normalizeEmail Function: Converts email to lowercase and replaces similar characters to help detect spoofed domains.
-Phishing Indicator Detection
-typescript
-Copy code
+
+<h2>Phishing Indicator Detection</h2>
 async function getPhishingIndicators(emailContent: string) {
     const { default: leven } = await import('leven');
 
@@ -90,31 +91,8 @@ async function getPhishingIndicators(emailContent: string) {
         urgentLanguage
     };
 }
-Suspicious Patterns: Regular expressions to identify suspicious URLs.
-Email Pattern: Regular expression to extract email addresses.
-Urgent Keywords: List of keywords indicating urgency, often used in phishing attempts.
-getPhishingIndicators Function: Identifies suspicious links, spoofed senders, and urgent language in email content.
-Email Scanning Endpoint
-typescript
-Copy code
-app.post('/scan-email', async (req: Request, res: Response) => {
-    if (!req.body || typeof req.body !== 'object') {
-        res.status(400).json({ error: 'Invalid request body' });
-        return;
-    }
 
-    const emailContent = (req.body as { content?: string }).content;
-    if (!emailContent || typeof emailContent !== 'string') {
-        res.status(400).json({ error: 'Invalid email content' });
-        return;
-    }
-    const indicators = await getPhishingIndicators(emailContent);
-    console.log(indicators);
-    res.json(indicators);
-});
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-/scan-email Endpoint: Accepts POST requests with email content, processes the content using getPhishingIndicators, and returns the results.
+-Suspicious Patterns: Regular expressions to identify suspicious URLs.
+-Email Pattern: Regular expression to extract email addresses.
+-Urgent Keywords: List of keywords indicating urgency, often used in phishing attempts.
+-getPhishingIndicators Function: Identifies suspicious links, spoofed senders, and urgent language in email content.
