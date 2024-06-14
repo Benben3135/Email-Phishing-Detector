@@ -4,12 +4,20 @@
 
 <h2>Technologies Used</h2>
 <h2>Backend</h2>
--Node.js: A JavaScript runtime built on Chrome's V8 engine, used to create the server-side application.
--Express: A web application framework for Node.js, used to set up the server and handle HTTP requests.
--Body-Parser: Middleware for parsing incoming request bodies in a middleware before your handlers, available under the req.body property.
--Cors: Middleware to enable Cross-Origin Resource Sharing, allowing the frontend to communicate with the backend.
--Path: A Node.js module used for working with file and directory paths.
--Leven: A library used to calculate the Levenshtein distance between two strings, which helps in identifying spoofed email domains.
+<ul>
+  <li>-Node.js: A JavaScript runtime built on Chrome's V8 engine, used to create the server-side application.</li>
+  <li>-Express: A web application framework for Node.js, used to set up the server and handle HTTP requests.</li>
+  <li>-Body-Parser: Middleware for parsing incoming request bodies in a middleware before your handlers, available under the req.body property.</li>
+  <li>-Cors: Middleware to enable Cross-Origin Resource Sharing, allowing the frontend to communicate with the backend.</li>
+  <li>-Path: A Node.js module used for working with file and directory paths.</li>
+  <li>-Leven: A library used to calculate the Levenshtein distance between two strings, which helps in identifying spoofed email domains.</li>
+</ul>
+
+
+
 <h2>Frontend</h2>
--React: A JavaScript library for building user interfaces.
--Tailwind CSS: A utility-first CSS framework to style the frontend components.
+<ul>
+  <li>-React: A JavaScript library for building user interfaces.</li>
+  <li>-A React framework that enables server-side rendering and generating static websites for React-based web applications.</li>
+  <li>-Tailwind CSS: A utility-first CSS framework to style the frontend components.</li>
+</ul>
