@@ -25,7 +25,6 @@
 <h1>Code Explanation</h1>
 <h2>Backend</h2>
 <h2>Server Setup</h2>
--------------------------------
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
