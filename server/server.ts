@@ -1,14 +1,13 @@
-import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
 import cors from 'cors';
+import express, { Request, Response } from 'express';
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 
-const commonDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'];
+const commonDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'microsoft.com', 'facebook.com', 'apple.com'];
 const similarCharacters: { [key: string]: string[] } = {
     'o': ['0'],
     '0': ['o'],
@@ -35,7 +34,7 @@ async function getPhishingIndicators(emailContent: string) {
     const { default: leven } = await import('leven');
 
     const suspiciousPatterns = [
-        /http[s]?:\/\/(?!(?:www\.)?(?:google|yahoo|hotmail|outlook)\.com)(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^?#]+)*\??(?:[^#]*#?[^#]*)?|http[s]?:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g
+        /http[s]?:\/\/(?!(?:www\.)?(?:google|yahoo|hotmail|outlook|microsoft|facebook|apple)\.com)(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^?#]+)*\??(?:[^#]*#?[^#]*)?|http[s]?:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g
     ];
     const emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
     const urgentKeywords = ["urgent", "immediately", "action required", "asap", "important", "attention"];
